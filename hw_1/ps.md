@@ -18,8 +18,8 @@ This matching is not stable. Man B would prefer to be with Woman X more than his
 ###### iii. How many stable matchings are there? List them.
 
 ```
-1. {(A, Z), (B, X), (C, Y)}
-2. {(A, Z), (B, Y), (C, X)}
+1. {(A, Z), (B, Y), (C, X)}
+2. {(A, Z), (B, X), (C, Y)}
 ```
 
 ###### iv. What is the matching returned by Gale-Shapley algorithm?
