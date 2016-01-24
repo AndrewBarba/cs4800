@@ -33,3 +33,15 @@ This matching is not stable. Man B would prefer to be with Woman X more than his
 ```
 {(A, Z), (B, Y), (C, X)}
 ```
+
+#### 2. Single Stable Matching
+
+###### i. True or False? Suppose that in an instance I of the Stable Matching Problem there is a man m and a woman w who like each other the most. Then the pair (m, w) must belong to every stable matching in this instance. Explain your answer.
+
+True. If there were a stable match where `m` was paired with `w'` and `w` was paired with `m'`, then there would exist a match where both `m` and `w` prefer to be with each other over their current partner. This means that the matching was never stable to begin with.
+
+###### ii. Explain why there is only one stable matching in the below instance of the Stable Matching Problem. List all of that matching’s edges.
+
+The pairs `(A, Z)` and `D, Y` must exist in all stable matches due to the contradiction above. This means there are only two additional matches: `{(B, X), (C, T)}` and `{(B, T), (C, X)}`. `{(B, X), (C, T)}` is unstable because both `B` and `T` would prefer to be with each other over their current match, therefore there is only one possible match left and thus this instance only has one possible stable matching.
+
+####  3. Stable Matching Examples
