@@ -60,6 +60,8 @@ The pairs `(A, Z)` and `D, Y` must exist in all stable matches due to the contra
 
 ###### iii. Let I be an instance of the Stable Matching Problem with men set M, women set W (|M| = |W| = n), and their preference lists. Let m1, m2 be two different men ∈ M, w1 the woman of highest rank on m1’s preference list which is matched with m1 in some stable matching ∈ I, w2 the woman of highest rank on m2’s preference list which is matched with m2 in some stable (perhaps different) matching ∈ I. Show that w1 != w2.
 
+Let's consider an instance I where `w1 == w2` and call her `w`. `w` is ranked 1st for both man `m1` and `m2`. In this instance `w` likes `m1` more than `m2`. We create a stable match where `w` is paired with `m1`. This is stable because `w` is `m1`'s top pick, and `w` likes `m1` at least more than `m2`. The problem states that there is a second stable match where `w` is paired with `m2`. In this matching `m1` would like `w` more than his partner, and we know `w` likes `m1` more than her partner. Therefore, this match is not stable. By contradiction, `w1` cannot be the same woman as `w2`.
+
 #### 4. Linear Algorithm
 
 ###### i. What is the running time of the “brute force” algorithm to determine whether ai + aj = S for some 1 ≤ i < j ≤ n?
