@@ -44,4 +44,22 @@ True. If there were a stable match where `m` was paired with `w'` and `w` was pa
 
 The pairs `(A, Z)` and `D, Y` must exist in all stable matches due to the contradiction above. This means there are only two additional matches: `{(B, X), (C, T)}` and `{(B, T), (C, X)}`. `{(B, X), (C, T)}` is unstable because both `B` and `T` would prefer to be with each other over their current match, therefore there is only one possible match left and thus this instance only has one possible stable matching.
 
-####  3. Stable Matching Examples
+#### 3. Stable Matching Examples
+
+#### 4. Linear Algorithm
+
+###### i. What is the running time of the “brute force” algorithm to determine whether ai + aj = S for some 1 ≤ i < j ≤ n?
+
+```
+O(n!)
+```
+
+###### ii. Give an algorithm for the above problem which runs in O(n) time.
+
+1. Create pointer `a` at index `0`
+2. Create pointer `z` at index `length - 1`
+3. `sum` is equal to `array[a] + array[z]`
+4. If `sum == value`, done.
+5. If `sum < value`, `a++`
+6. If `sum > value`, `z--`
+7. Repeat until `a == z` or match found
