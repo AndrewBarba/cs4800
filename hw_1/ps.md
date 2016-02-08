@@ -84,8 +84,16 @@ O(n!)
 
 ###### a.
 
+`f = O(g)` because `g(n)` grows much larger than `f(n)` for all `n > ~2.75`
+
 ###### b.
+
+`f = O(g)` because `g(n)` grows much larger than `f(n)` for all `n > ~7.0`
 
 ###### c.
 
+`f =  Ω(g)` because `f(n)` grows much larger than `g(n)` for all `n > ~1.0`
+
 ###### d.
+
+`f = Θ(g)` because the functions are equal for some constant C

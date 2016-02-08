@@ -1,3 +1,5 @@
+// HackerRank
+// andrewbarb
 'use strict';
 
 let input = "";
