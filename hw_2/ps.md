@@ -40,6 +40,22 @@ True. Start with Node 1. Now connect it to an unseen node to prevent a cycle. We
 
 True. Let's create a graph where every node has >= 2 degrees, and try to make it not contain a cycle. Start with Node 1. Now connect it to an unseen node to prevent a cycle. We must add a new node 2. Now we must connect 2 to an unseen node, we must add a 3rd node. Now connected 3 to an unseen node... etc. etc. This cycle will continue for infinity. If we know G is finite, and for every input to a vertex v there must be an output, then it must contain a cycle. We cannot create a graph without cycles that does not have a vertex with <= 1 degree.
 
-#### 3.
+#### 3. Paths
 
 Because the shortest path between `x` and `y` is `> V / 2`, we know that we cannot create another path between `x` and `y` that excludes all vertex in the shortest path. This tells us that every additional path to `x` and `y` must contain at least one node on the original path. Our goal now is to provide 2 more paths between `x` and `y` that do not share a common vertex `z`. If we find 2 such paths, then we would have found a path that did not include a point on the original shortest path between `x` and `y`. By contradiction, we cannot find such a path, and thus there must exist a vertex `z` that is part of all paths joining `x` and `y`.
+
+#### 4. Connectivity
+
+###### i.
+
+Assume we have DFS tree G, which can be uniquely generated for a graph in linear time. By definition of a tree, we can remove a leaf node and the graph will still be connected. Since we can always generate a DFS tree G for a connected graph, then there must exist a node (leaf) that we can remove that keeps G connected.
+
+###### ii.
+
+Build any strongly connected directed graph where each vertex V has only 1 outgoing edge. By removing any one node, the chain will be broken and the graph will no longer be strongly connected. A simple example is a 3 vertex graph where each vertex has an edge pointing into it and one edge pointing out from it.
+
+###### iii.
+
+Similar to the previous question, consider 2 examples from the pervious question, say 2, 3 node triangular strongly connected components where each node in the 3 node set has one edge pointing out of it and one node pointing into it, but, there is no connection between the 2 strongly connected components. By only adding a single edge between the two components, there will be no way to make the two graphs strongly connected because that edge can only lead to the other component and not back to the original.
+
+#### 5. Consistency of constraints 
