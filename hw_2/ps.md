@@ -58,4 +58,12 @@ Build any strongly connected directed graph where each vertex V has only 1 outgo
 
 Similar to the previous question, consider 2 examples from the pervious question, say 2, 3 node triangular strongly connected components where each node in the 3 node set has one edge pointing out of it and one node pointing into it, but, there is no connection between the 2 strongly connected components. By only adding a single edge between the two components, there will be no way to make the two graphs strongly connected because that edge can only lead to the other component and not back to the original.
 
-#### 5. Consistency of constraints 
+#### 5. Consistency of constraints
+
+###### i.
+
+No, it cannot be satisfied. Because `1 == 3`, and `2 == 4`, we can substitute variables and say that: `6 > 4 > 1`. And because `5 == 6`, we can substitute variables and say `1 > 6`. It is a contradiction for `1 > 6 && 1 < 4 < 6`.
+
+###### ii.
+
+Because there are two distinct types of constraints, strict equality and strict inequality, we will model a graph where an equality constraint will be represented by a strongly connected pair of vertex, where there is a directed edge from vertex `x` to `y` and also a directed edge from `y` to `x`. The other type of constraint will be represented as a directed edge from the large vertex to the smaller vertex, but no edge from the smaller vertex to the larger vertex. for example, `x > y`, there is a directed edge from `x` to `y` but not from `y` to `x`. We will then use our black box algorithm to find all strongly connected components of our graph. Among completion, we will look for any one directed edge that connects any two strongly connected components but not in the opposite direction. If we find such an edge, we will output: "No", the constraints cannot be met.
