@@ -37,6 +37,10 @@ function colonize(species, discounts) {
   return cheapestPrice;
 }
 
+/*----------------------------------------------------------------------------*
+ * Helper functions
+ *----------------------------------------------------------------------------*/
+
 /**
  * Returns the price of applying a single discount to a set of species
  *
@@ -45,18 +49,13 @@ function colonize(species, discounts) {
  * @return Int
  */
 function priceWithDiscount(species, discounts) {
-
-  // Combine the discounts first
-  const discount = combineDiscounts(species, discounts);
-
   try {
-    // Calculate price when applied to list of species
+    const discount = combineDiscounts(discounts);
     return species.reduce((answer, species, i) => {
       if (species.needToBring < discount.package[i]) throw new Error('Invalid discount');
       return answer + (species.cost * (species.needToBring - discount.package[i]));
     }, discount.price);
   } catch(err) {
-    // -1 indicates an invalid discount
     return -1;
   }
 }
@@ -68,15 +67,13 @@ function priceWithDiscount(species, discounts) {
  * @param {[Discounts]} discounts
  * @return Discount
  */
-function combineDiscounts(species, discounts) {
-  return discounts.reduce((prev, cur) => {
+function combineDiscounts(discounts) {
+  return discounts.reduce((answer, discount) => {
+    if (!answer) return discount;
     return {
-      price: prev.price + cur.price,
-      package: prev.package.map((num, i) => num + cur.package[i])
+      price: answer.price + discount.price,
+      package: answer.package.map((num, i) => num + discount.package[i])
     };
-  }, {
-    price: 0,
-    package: species.map(() => 0)
   });
 }
 
