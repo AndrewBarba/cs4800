@@ -15,19 +15,12 @@
  *                    if discounts[2] == 4, that means this discount can bring 4
  *                    of the same type of species at species[2]
  *
+ * @param {Int} initialPrice - initial price of bringing all species without applying any discounts
  * @param {[Species]} species
  * @param {[Discount]} discounts
  * @return Int
  */
-function colonize(species, discounts) {
-
-  // This is the price without applying any discounts.
-  // Any price >= this can be immediately rejected.
-  const initialPrice = species.reduce((answer, species) => {
-    return answer + (species.cost * species.needToBring);
-  }, 0);
-
-  // Variable to store our current answer
+function colonize(initialPrice, species, discounts) {
   let cheapestPrice = initialPrice;
 
   //
@@ -110,8 +103,14 @@ function processData(input) {
     };
   });
 
+  // This is the price without applying any discounts.
+  // Any price >= this can be immediately rejected.
+  const initialPrice = species.reduce((answer, species) => {
+    return answer + (species.cost * species.needToBring);
+  }, 0);
+
   // Run algorithm
-  let minPrice = colonize(species, discounts);
+  let minPrice = colonize(initialPrice, species, discounts);
 
   // Print to stdout
   console.log(minPrice);
