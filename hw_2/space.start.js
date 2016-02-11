@@ -41,7 +41,7 @@ function colonize(initialPrice, species, discounts) {
  * @param {[Discounts]} discounts
  * @return Int
  */
-function priceWithDiscount(species, discounts) {
+function priceWithDiscounts(species, discounts) {
   try {
     const discount = combineDiscounts(discounts);
     return species.reduce((answer, species, i) => {
