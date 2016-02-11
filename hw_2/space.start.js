@@ -36,6 +36,7 @@ function colonize(initialPrice, species, discounts) {
 
 /**
  * Returns the price of applying a set of discounts to a set of species
+ * Returns -1 if the discount tries to bring more species than allowed
  *
  * @param {[Species]} species
  * @param {[Discount]} discounts
@@ -47,6 +48,7 @@ function priceWithDiscounts(species, discounts) {
 
 /**
  * Returns the price of applying a single discount to a set of species
+ * Returns -1 if the discount tries to bring more species than allowed
  *
  * @param {[Species]} species
  * @param {Discount} discount
