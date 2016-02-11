@@ -25,9 +25,7 @@ function colonize(initialPrice, species, discounts) {
 
   // Duplicate discounts once
   // This will answer 99% of the test cases correctly
-  for (let i = 0, length = discounts.length; i < length; i++) {
-    discounts.push(discounts[i]);
-  }
+  discounts = discounts.concat(discounts);
 
   // Try all combinations
   const pset = [[]];
