@@ -24,7 +24,7 @@ function colonize(initialPrice, species, discounts) {
   let cheapestPrice = initialPrice;
 
   // Duplicate discounts once
-  // This will answer 90% of the test cases correctly
+  // This will answer 99% of the test cases correctly
   for (let i = 0, length = discounts.length; i < length; i++) {
     discounts.push(discounts[i]);
   }
