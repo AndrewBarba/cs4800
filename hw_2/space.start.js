@@ -42,8 +42,18 @@ function colonize(initialPrice, species, discounts) {
  * @return Int
  */
 function priceWithDiscounts(species, discounts) {
+  return priceWithDiscount(species, combineDiscounts(discounts));
+}
+
+/**
+ * Returns the price of applying a single discount to a set of species
+ *
+ * @param {[Species]} species
+ * @param {Discounts} discount
+ * @return Int
+ */
+function priceWithDiscount(species, discount) {
   try {
-    const discount = combineDiscounts(discounts);
     return species.reduce((answer, species, i) => {
       if (species.needToBring < discount.package[i]) throw new Error('Invalid discount');
       return answer + (species.cost * (species.needToBring - discount.package[i]));
