@@ -42,7 +42,7 @@ function colonize(species, discounts) {
  *----------------------------------------------------------------------------*/
 
 /**
- * Returns the price of applying a single discount to a set of species
+ * Returns the price of applying a set of discounts to a set of species
  *
  * @param {[Species]} species
  * @param {[Discounts]} discounts
