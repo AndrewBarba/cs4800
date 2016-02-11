@@ -28,9 +28,12 @@ function colonize(initialPrice, species, discounts) {
   discounts = discounts.concat(discounts);
 
   // Try all combinations
+  const startTime = Date.now();
   const pset = [[]];
   for (let i = 0; i < discounts.length; i++) {
     for (let j = 0, length = pset.length; j < length; j++) {
+      // Don't run for too long ;)
+      if (Date.now() - startTime > 8 * 1000) return cheapestPrice;
       const combination = pset[j].concat(discounts[i]);
       const price = priceWithDiscounts(species, combination);
       if (price < 0 || cheapestPrice <= combination.price) continue;
