@@ -30,7 +30,7 @@ class MakeSet {
   constructor(count) {
     this._roots = new Array(count);
     this._ranks = new Array(count);
-    for(let i = 0; i < count; ++i) {
+    for(let i = 0; i < count; i++) {
       this._roots[i] = i;
       this._ranks[i] = 0;
     }
@@ -50,10 +50,10 @@ class MakeSet {
   find(x) {
     let x0 = x;
     let roots = this.roots;
-    while(roots[x] !== x) {
+    while (roots[x] !== x) {
       x = roots[x];
     }
-    while(roots[x0] !== x) {
+    while (roots[x0] !== x) {
       let y = roots[x0];
       roots[x0] = x;
       x0 = y;
@@ -64,20 +64,18 @@ class MakeSet {
   link(x, y) {
     let xr = this.find(x);
     let yr = this.find(y);
-    if(xr === yr) {
-      return;
-    }
+    if (xr === yr) return;
     let ranks = this.ranks;
     let roots = this.roots;
     let xd = ranks[xr];
     let yd = ranks[yr];
-    if(xd < yd) {
+    if (xd < yd) {
       roots[xr] = yr;
-    } else if(yd < xd) {
+    } else if (yd < xd) {
       roots[yr] = xr;
     } else {
       roots[yr] = xr;
-      ++ranks[xr];
+      ranks[xr]++;
     }
   }
 }
@@ -89,10 +87,8 @@ function processData(input) {
 
   const edges = parts.slice(1, totalWires + 1);
   const check = parts.slice(totalWires + 1);
-  const nodes = [];
-  for (let i = 0; i < totalStations; i++) {
-    nodes.push(i);
-  }
+  const nodes = new Array(totalStations);
+  for (let i = 0; i < totalStations; i++) nodes[i] = i;
 
   espionage(nodes, edges, check);
 }
