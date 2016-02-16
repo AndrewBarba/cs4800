@@ -20,14 +20,14 @@ function isActive(mst, wire) {
 
 function kruskal(vertices, edges) {
   let mst = [];
-  let forest = new MakeSet(vertices.length);
+  let forest = new UnionFind(vertices.length);
   edges = edges.sort((a, b) => a[2] - b[2]);
   edges.forEach(edge => {
     let u = edge[0];
     let v = edge[1];
     if (forest.find(u) !== forest.find(v)) {
       mst.push(edge);
-      forest.link(u, v);
+      forest.union(u, v);
     }
   });
   return mst;
@@ -37,7 +37,7 @@ function kruskal(vertices, edges) {
  * Disjointed Set
  *----------------------------------------------------------------------------*/
 
-class MakeSet {
+class UnionFind {
 
   constructor(count) {
     this._roots = new Array(count);
@@ -51,13 +51,6 @@ class MakeSet {
   get roots() { return this._roots; }
   get ranks() { return this._ranks; }
   get length() { return this._roots.length; }
-
-  makeSet() {
-    let n = this.roots.length;
-    this.roots.push(n);
-    this.ranks.push(0);
-    return n;
-  }
 
   find(x) {
     let x0 = x;
@@ -73,7 +66,7 @@ class MakeSet {
     return x;
   }
 
-  link(x, y) {
+  union(x, y) {
     let xr = this.find(x);
     let yr = this.find(y);
     if (xr === yr) return;
