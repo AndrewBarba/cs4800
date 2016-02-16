@@ -2,13 +2,21 @@
 
 function espionage(nodes, edges, check) {
   let mst = kruskal(nodes, edges);
-  check.forEach(wire => {
-    let found = mst.filter(node => {
-      return (node[0] === wire[0] && node[1] === wire[1]) || (node[0] === wire[1] && node[1] === wire[0]);
-    });
-    console.log(found.length ? 'yes' : 'no');
-  });
+  let answers = check.map(wire => isActive(mst, wire) ? 'yes' : 'no');
+  console.log(answers.join('\n'));
 }
+
+function isActive(mst, wire) {
+  for (let i = 0; i < mst.length; i++) {
+    let node = mst[i];
+    if ((node[0] === wire[0] && node[1] === wire[1]) || (node[0] === wire[1] && node[1] === wire[0])) return true;
+  }
+  return false;
+}
+
+/*----------------------------------------------------------------------------*
+ * Kruskal's Algorthim
+ *----------------------------------------------------------------------------*/
 
 function kruskal(vertices, edges) {
   let mst = [];
@@ -24,6 +32,10 @@ function kruskal(vertices, edges) {
   });
   return mst;
 }
+
+/*----------------------------------------------------------------------------*
+ * Disjointed Set
+ *----------------------------------------------------------------------------*/
 
 class MakeSet {
 
@@ -79,6 +91,10 @@ class MakeSet {
     }
   }
 }
+
+/*----------------------------------------------------------------------------*
+ * Parse Data
+ *----------------------------------------------------------------------------*/
 
 function processData(input) {
   const parts = input.split('\n').map(line => line.split(' ').map(num => parseInt(num)));
