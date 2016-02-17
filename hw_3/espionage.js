@@ -40,47 +40,40 @@ function kruskal(vertices, edges) {
 class UnionFind {
 
   constructor(count) {
-    this._roots = new Array(count);
-    this._ranks = new Array(count);
+    this._store = [];
     for(let i = 0; i < count; i++) {
-      this._roots[i] = i;
-      this._ranks[i] = 0;
+      let node = {
+        parent: null,
+        rank: 0,
+        id: i
+      };
+      node.parent = node;
+      this._store.push(node);
     }
   }
 
-  get roots() { return this._roots; }
-  get ranks() { return this._ranks; }
-  get length() { return this._roots.length; }
-
-  find(x) {
-    let x0 = x;
-    let roots = this.roots;
-    while (roots[x] !== x) {
-      x = roots[x];
-    }
-    while (roots[x0] !== x) {
-      let y = roots[x0];
-      roots[x0] = x;
-      x0 = y;
-    }
-    return x;
+  get store() {
+    return this._store;
   }
 
-  union(x, y) {
-    let xr = this.find(x);
-    let yr = this.find(y);
-    if (xr === yr) return;
-    let ranks = this.ranks;
-    let roots = this.roots;
-    let xd = ranks[xr];
-    let yd = ranks[yr];
-    if (xd < yd) {
-      roots[xr] = yr;
-    } else if (yd < xd) {
-      roots[yr] = xr;
+  find(id) {
+    let n = this.store[id];
+    return (n.parent === n) ? n : this.find(n.parent.id);
+  }
+
+  union(id1, id2) {
+    let n1 = this.find(id1);
+    let n2 = this.find(id2);
+    if (n1.rank < n2.rank) {
+      n1.parent = n2;
+      return n2;
+    } else if (n2.rank < n1.rank) {
+      n2.parent = n1;
+      return n1;
     } else {
-      roots[yr] = xr;
-      ranks[xr]++;
+      n2.parent = n1;
+      n1.rank += 1;
+      return n1;
     }
   }
 }
