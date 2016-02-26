@@ -53,4 +53,16 @@ In this example the algorithm will determine the "shortest" path to B is directl
 
 #### 4. Trees
 
+Borrowing from my example in question 2:
+
+```
+ <---(50)-----
+|             |
+S --(-200)--> A
+|
+----(-50)---> B
+```
+
+This graph contains a negative-cycle which by definition cannot be a tree.
+
 #### 5. Maximum Edge Minimal
