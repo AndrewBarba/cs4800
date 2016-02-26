@@ -55,7 +55,7 @@ In this example the algorithm will determine the "shortest" path to B is directl
 
 ###### Part A.
 
-By definition the subset of edges that are connected and all have positive weight cannot contain a cycle because a cycle would allow us to remove an edge without affecting the connectivity. If we could remove an edge then the subset would not be a minimum in the first place and that is a contradiction. 
+By definition the subset of edges that are connected and all have positive weight cannot contain a cycle because a cycle would allow us to remove an edge without affecting the connectivity. If we could remove an edge then the subset would not be a minimum in the first place and that is a contradiction.
 
 ###### Part B.
 
@@ -72,3 +72,5 @@ S --(-200)--> A
 This graph contains a negative-cycle which by definition cannot be a tree.
 
 #### 5. Maximum Edge Minimal
+
+First we would split the the edges into 2 sets, one set with all weights less than the median weight and one set with all weights greater than or equal to the median weight. If a spanning tree exists in one of the subset with weights less than the median then we recurse over just that set. Otherwise we recurse over the larger set composed of super vertices and we repeat this process until there are two super vertices remaining with a single edge between them.
