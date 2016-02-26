@@ -37,6 +37,18 @@ F  H
 
 #### 2. Negative Edges
 
+Dijsktra's Algorithm **can fail** on a graph where the only negative weighted edges are those coming from the source node. A simple example where we create a cycle:
+
+```
+ <---(50)-----
+|             |
+S --(-200)--> A
+|
+----(-50)---> B
+```
+
+In this example the algorithm will determine the "shortest" path to B is directly from S. However, if you follow S -> A -> S -> B we can technically get to B in shorter distance based on the weights and could keep repeating this path creating a negative cycle.
+
 #### 3. Skiing agency
 
 #### 4. Trees
