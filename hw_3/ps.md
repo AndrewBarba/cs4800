@@ -5,7 +5,7 @@ Andrew Barba [abarba@ccs.neu.edu](abarba@ccs.neu.edu)
 
 #### 1. Dijsktra Algorithm Run
 
-###### Part a.
+###### Part A.
 
 ```
 A    | B    | C    | D    | E    | F    | G    | H
@@ -19,7 +19,7 @@ G    | 1(A) | 3(B) | 4(C) | 4(A) | 6(G) | 5(D) | 6(G)
 F    | 1(A) | 3(B) | 4(C) | 4(A) | 6(G) | 5(D) | 6(G)
 ```
 
-###### Part b.
+###### Part B.
 
 ```
 A
@@ -52,6 +52,12 @@ In this example the algorithm will determine the "shortest" path to B is directl
 #### 3. Skiing agency
 
 #### 4. Trees
+
+###### Part A.
+
+By definition the subset of edges that are connected and all have positive weight cannot contain a cycle because a cycle would allow us to remove an edge without affecting the connectivity. If we could remove an edge then the subset would not be a minimum in the first place and that is a contradiction. 
+
+###### Part B.
 
 Borrowing from my example in question 2:
 
