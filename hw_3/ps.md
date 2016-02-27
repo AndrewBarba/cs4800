@@ -51,6 +51,22 @@ In this example the algorithm will determine the "shortest" path to B is directl
 
 #### 3. Skiing agency
 
+1. Create a graph with `n + 2` nodes
+2. Label half the nodes sequentially with a prefix of `A`. For example: `A1, A2, A3` etc.
+3. Label the other half sequentially with a prefix of `B`. For example: `B1, B2, B3` etc.
+4. A prefixed nodes represent skiers, B prefix nodes represent skis. For every ski, `B`, node draw add an edge to every skier, `A`, node with weight `0`. It will cost us nothing to go from a ski to the next person in line.
+5. For every skier, `A`, node draw add an edge to every ski, `B`, node with weight `abs(ski.height - skier.height)`. It will cost us the absolute difference in height to go from a skier to a ski. This represents assigning a ski to that skier.
+6. Run Dijsktra's Algorithm on this graph.
+7. The shortest path produced will be the best we can match skiers to skis.
+
+This algorithm works for three main reasons:
+
+1. There are no paths from a skier to another skier, or a ski to another ski. Every path either assigns a ski to a skier or moves to the next skier in line.
+2. Dijsktra's Algorithm must visit every node in the graph to find the shortest path that connects all nodes.
+3. All weights are positive which means the algorithm is guaranteed to find a shortest path.
+
+We know the algorithm is correct because by design (reason 1 above) every path that connects all nodes produces some pairing where all skiers are assigned a pair of skis. Knowing that, Dijsktra's Algorithm is going to guarantee it finds the shortest of those paths.
+
 #### 4. Trees
 
 ###### Part A.
