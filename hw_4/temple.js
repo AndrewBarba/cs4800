@@ -5,7 +5,7 @@
  *----------------------------------------------------------------------------*/
 
 function processData(input) {
-  const parts = input.split('\n').map(line => line.split(' ').map(n => parseInt(n)));
+  const parts = input.split('\n').map(l => l.split(' ').map(n => parseInt(n)));
   const n = parts[0][0];
   const m = parts[1][0];
   const k = parts[0].slice(1).reverse();
@@ -17,13 +17,12 @@ function processData(input) {
     let key = 0;
     let start = Math.max(0, t - m + 1);
     let end = Math.min(n - 1, t);
-    for (let i = start; i <= end; i++) {
+    for (let i = start; i <= end; i++)
       key += k[i] * l[t - i];
-    }
-    c.push(key);
+    c.unshift(key);
   }
 
-  console.log(c.reverse().join(' '));
+  console.log(c.join(' '));
 }
 
 /*----------------------------------------------------------------------------*
