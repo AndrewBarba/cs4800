@@ -5,11 +5,11 @@
  *----------------------------------------------------------------------------*/
 
 function processData(input) {
-  const parts = input.split('\n').map(l => l.split(' ').map(n => parseInt(n)));
-  const n = parts[0][0];
-  const m = parts[1][0];
-  const k = parts[0].slice(1).reverse();
-  const l = parts[1].slice(1).reverse();
+  const p = input.split('\n').map(l => l.split(' ').map(n => parseInt(n)));
+  const n = p[0][0];
+  const m = p[1][0];
+  const k = p[0].slice(1).reverse();
+  const l = p[1].slice(1).reverse();
   const d = n + m - 1;
   const c = [];
 
