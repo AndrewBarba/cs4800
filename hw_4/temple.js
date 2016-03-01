@@ -18,6 +18,9 @@ function processData(input) {
     c.unshift(key);
   }
 
+  while (c[0] === 0 && c.length > 1)
+    c.shift();
+
   console.log(c.join(' '));
 }
 
