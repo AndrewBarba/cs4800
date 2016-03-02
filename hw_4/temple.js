@@ -1,11 +1,11 @@
 'use strict';
 
 function processData(input) {
-  const p = input.split('\n').map(l => l.split(' ').map(n => parseInt(n)));
-  const n = p[0][0];
-  const m = p[1][0];
+  const p = input.split('\n').map(l => l.trim().split(' ').map(n => parseInt(n)));
   const k = p[0].slice(1).reverse();
   const l = p[1].slice(1).reverse();
+  const n = k.length;
+  const m = l.length;
   const d = n + m - 1;
   const c = [];
 
@@ -13,13 +13,15 @@ function processData(input) {
     let key = 0;
     let start = Math.max(0, t - m + 1);
     let end = Math.min(n - 1, t);
-    for (let i = start; i <= end; i++)
+    for (let i = start; i <= end; i++) {
       key += k[i] * l[t - i];
+    }
     c.unshift(key);
   }
 
-  while (c[0] === 0 && c.length > 1)
+  while (c[0] === 0 && c.length > 1) {
     c.shift();
+  }
 
   console.log(c.join(' '));
 }
