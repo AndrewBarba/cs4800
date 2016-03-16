@@ -93,4 +93,14 @@ It's clear that the time bound holds because we are always splitting the input i
 
 #### 4. Dominant Elements
 
+0. If the length of the list is 1, return the only element in the list.
+1. Split the given list into two lists of equal size.
+2. Compute dominant element on the left list and the right list.
+3. If both elements have the same dominant element, return that element.
+4. If there is a left dominant element, count the occurrence in both lists and return it if it is a majority element.
+5. If there is a right dominant element, count the occurrence in both lists and return it if it is a majority element.
+6. Otherwise, return null.
+
+The running time of this algorithm is `O(n*log(n))`.
+
 #### 5. Local Minimum
