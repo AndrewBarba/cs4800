@@ -74,6 +74,23 @@ T(4n) = 0.25*sqrt(4n)*(log(4n)^2)
 
 #### 3. Largest Difference
 
+###### i.
+
+The running time is `O(n^2)`.
+
+###### ii.
+
+0. If list is length 1, return 0.
+1. If list is length 2, return list[1] - list[0].
+2. Split the given list into two lists of equal size
+3. Compute the largest diff on the left list, and compute the largest diff on the right list.
+4. Compute a cross diff by subtracting the smallest number in the left list from the largest number in the right list.
+5. If the left largest diff is greater than the right largest diff and the cross diff, return left.
+6. If the right largest diff is greater than the left largest diff and the cross diff, return right.
+7. Otherwise, return cross diff.
+
+It's clear that the time bound holds because we are always splitting the input into two parts and returning when a list is of length 1 or 2. This will always yield log(n) splits of the input and we will visit each element in the list once.
+
 #### 4. Dominant Elements
 
 #### 5. Local Minimum
