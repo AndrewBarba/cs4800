@@ -104,3 +104,5 @@ It's clear that the time bound holds because we are always splitting the input i
 The running time of this algorithm is `O(n*log(n))`.
 
 #### 5. Local Minimum
+
+We will start by examining the two vertexes connected to the root node and seeing if both vertexes have a higher value than the root. If they do, we are done, but if they don't we will move to the smaller of the two attached nodes and repeat the process. In each iteration we move to the smaller node and worst case, will come to a leaf node where the only vertex above it has to be greater because all values in the tree are unique. This leaf node would then be a local minimum and it took log(n) traversals to get there.
