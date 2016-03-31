@@ -7,21 +7,65 @@ function processData(input) {
   const s = p[0][2]; // start
   const t = p[0][3]; // end
   const paths = p.slice(1);
-  const graph = [];
 
-  for (let i = 0; i < n; i++) {
-    let p = [];
-    for (let j = 0; j < n; j++) {
-      p.push(0);
-    }
-    graph.push(p);
-  }
+  let network = new Network(n);
 
   for (let path of paths) {
-    graph[path[0]][path[1]] = 1;
+    network.addEdge(path[0], path[1], 1);
   }
 
-  console.log(fordFulkerson(graph, s, t));
+  console.log(network.maxFlow(s, t));
+}
+
+class Network {
+
+  constructor(nodes) {
+    this._graph = [];
+    for (let i = 0; i < nodes; i++) {
+      this._graph.push([]);
+      for (let j = 0; j < nodes; j++) {
+        this._graph[i].push(0);
+      }
+    }
+  }
+
+  get graph() {
+    return this._graph;
+  }
+
+  addEdge(x, y, val) {
+    this.graph[x][y] = val;
+  }
+
+  maxFlow(s, t) {
+    let rGraph = [];
+  	for (let u = 0; u < this.graph.length; u++) {
+  		let temp = [];
+  		for (let v = 0; v < this.graph.length; v++) {
+  			temp.push(this.graph[u][v]);
+  		}
+  		rGraph.push(temp);
+  	}
+
+  	let parent = [];
+  	let maxFlow = 0;
+
+  	while (bfs(rGraph, s, t, parent)) {
+  		let pathFlow = Number.MAX_VALUE;
+      for (let v = t; v !== s; v = parent[v]) {
+  			let u = parent[v];
+  			pathFlow = Math.min(pathFlow, rGraph[u][v]);
+  		}
+      for (let v = t; v !== s; v = parent[v]) {
+  			let u = parent[v];
+  			rGraph[u][v] -= pathFlow;
+  			rGraph[v][u] += pathFlow;
+  		}
+  		maxFlow += pathFlow;
+  	}
+
+  	return maxFlow;
+  }
 }
 
 function bfs(rGraph, s, t, parent) {
@@ -49,36 +93,6 @@ function bfs(rGraph, s, t, parent) {
 	}
 
 	return visited[t] === true;
-}
-
-function fordFulkerson(graph, s, t) {
-	let rGraph = [];
-	for (let u = 0; u < graph.length; u++) {
-		let temp = [];
-		for (let v = 0; v < graph.length; v++) {
-			temp.push(graph[u][v]);
-		}
-		rGraph.push(temp);
-	}
-
-	let parent = [];
-	let maxFlow = 0;
-
-	while (bfs(rGraph, s, t, parent)) {
-		let pathFlow = Number.MAX_VALUE;
-    for (let v = t; v !== s; v = parent[v]) {
-			let u = parent[v];
-			pathFlow = Math.min(pathFlow, rGraph[u][v]);
-		}
-    for (let v = t; v !== s; v = parent[v]) {
-			let u = parent[v];
-			rGraph[u][v] -= pathFlow;
-			rGraph[v][u] += pathFlow;
-		}
-		maxFlow += pathFlow;
-	}
-
-	return maxFlow;
 }
 
 /*----------------------------------------------------------------------------*
