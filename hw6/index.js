@@ -17,6 +17,10 @@ function processData(input) {
   console.log(network.maxFlow(s, t));
 }
 
+/*----------------------------------------------------------------------------*
+ * Data Structure
+ *----------------------------------------------------------------------------*/
+
 class Network {
 
   constructor(nodes) {
