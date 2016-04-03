@@ -20,6 +20,7 @@ This is **NOT** a max flow. The max flow is 21, which we know from finding the m
 3. (u,t), (v,t) = 2
 
 ###### e) What is the minimum capacity of an s − t cut in the flow network below on the right?
+(s,u), (v,t) = 4
 
 #### Problem 2
 The maximum flow is **13** via the minimum cut (s,a), (s,b), (c,b), (f,t)
