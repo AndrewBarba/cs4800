@@ -27,6 +27,20 @@ The maximum flow is **13** via the minimum cut (s,a), (s,b), (c,b), (f,t)
 
 #### Problem 3
 
+###### a) The capacity of an edge e increases by 1
+1. Create residual graph
+2. Add 1 capacity to modified e
+3. Search for augmented path (BFS)
+4. If path exists, flow can be increased by 1.
+5. If path does not exist, flow cannot be increased
+
+###### b) The capacity of an edge e decreases by 1
+1. Create residual graph
+2. If e was not already at capacity, stop. Flow is unchanged.
+3. If at capacity, add 1 to negative capacity on e
+4. Look for augmented path from t to s which includes e
+5. If found, decrease flow by 1.
+
 #### Problem 4
 
 #### Problem 5
