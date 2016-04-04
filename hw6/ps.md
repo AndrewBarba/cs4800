@@ -43,6 +43,29 @@ The maximum flow is **13** via the minimum cut (s,a), (s,b), (c,b), (f,t)
 
 #### Problem 4
 
+###### a) State the decision version of the Maximum Clique Problem
+Does a graph G = (V, E) include a clique >= size of integer k?
+
+###### b)
+3 arguments: The graph G, size integer k, and another graph W. The algorithm will check that:
+
+1. W is a subset of V
+2. Size of clique W is >= k
+3. Every edge (u,v) in W is in V
+
+###### c)
+1. Assume clique(G,k) == true, then W must satisfy conditions in the certifier and the certifier will return true.
+2. Assume W, the certifier checks that W is a clique and that |W| >= k, thus clique(G,K) will return true.
+
+###### d)
+We can reduce another NP-complete problem down to clique.
+
 #### Problem 5
+
+###### a) Is it the case that Interval Scheduling ≤P Vertex Cover?
+Yes. Interval scheduling problem is `O(n*logn)`. It can be solved in polynomial time without making additional calls to a black box service that solves vertex cover. Therefore it is ≤P Vertex Cover.
+
+###### b) Is it the case that Independent Set ≤P Interval Scheduling?
+Unknown, because it would resolve the question of whether P = NP. Interval scheduling can be solved in polynomial time so assuming Independent Set ≤P Interval Scheduling then Independent set can be solved in polynomial time and is NP-complete. An arbitrary NP-complete problem can be solved in polynomial time if P = NP. Thus Independent Set ≤P Interval Scheduling implies P = NP.
 
 #### Problem 6
