@@ -3,7 +3,7 @@ Problem Set 6
 
 Andrew Barba [abarba@ccs.neu.edu](abarba@ccs.neu.edu)
 
-#### 1. Flows
+#### Problem 1
 
 ###### a) What is the value of this flow?
 Flow is equal to **18**
@@ -69,3 +69,4 @@ Yes. Interval scheduling problem is `O(n*logn)`. It can be solved in polynomial 
 Unknown, because it would resolve the question of whether P = NP. Interval scheduling can be solved in polynomial time so assuming Independent Set ≤P Interval Scheduling then Independent set can be solved in polynomial time and is NP-complete. An arbitrary NP-complete problem can be solved in polynomial time if P = NP. Thus Independent Set ≤P Interval Scheduling implies P = NP.
 
 #### Problem 6
+Given a problem X and Y, if Y ≤P X and Y is NP-complete, then X is NP-complete. Since Vertex Cover is in NP, we going to try and show: Vertex Cover ≤P Efficient recruiting. To do this, let's assume we have a black box algorithm that solves Efficient recruiting. Let's mark all applicants as a node on a graph, and all sports as edges off of the nodes that counselors are skilled in. If we ask the black box if there is a cover of size |sports| it will return true, since we know every sport is covered by at least 1 applicant.
